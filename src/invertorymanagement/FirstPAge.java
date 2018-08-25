@@ -142,6 +142,9 @@ public class FirstPAge extends javax.swing.JFrame {
     
     private void jButtonCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCustomerActionPerformed
         // TODO add your handling code here:
+        
+        CustomerItem cs = new CustomerItem();
+        cs.setVisible(true);
     }//GEN-LAST:event_jButtonCustomerActionPerformed
 
     
