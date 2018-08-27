@@ -37,13 +37,14 @@ public class DeleteItem {
    static FormulaEvaluator formulaEvaluator;
    static String Code,name;
    static String cellid;
+   static double Price,TotalPrice;
    static boolean check;
    static Sheet s;
     public DeleteItem( String Item_Code) throws FileNotFoundException, IOException, InvalidFormatException{
           
         Code = Item_Code;
        // Quantity =item_Quantity;
-       // Price =   Item_Price;
+        
         
         //System.out.println("Id:"+this.Id+"\n Pass: "+this.Password);
          
@@ -62,6 +63,7 @@ public class DeleteItem {
                      
                      Cell cell0 =row.getCell(0);
                      Cell cell = row.getCell(1);
+                     Cell cell1 = row.getCell(3);
                     
                   if (cell != null) {
                         // Found column and there is value in the cell.
@@ -71,7 +73,16 @@ public class DeleteItem {
                            
                             Row rowh = hssfs.getRow(rowIndex);
                             name = cell0.getStringCellValue();
+                            DeleteItem.Price =cell1.getNumericCellValue();
                             hssfs.removeRow(rowh);
+                            
+                            
+                             row = hssfs.createRow(rowIndex);
+                            row.createCell(0).setCellValue(this.name);
+                            row.createCell(1).setCellValue(cellid);
+                            row.createCell(2).setCellValue(0);
+                            row.createCell(3).setCellValue(this.Price);
+                            row.createCell(4).setCellValue(0);
                             check = true;    
                             System.out.println(name);
               }
